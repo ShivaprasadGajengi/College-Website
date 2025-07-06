@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #dfe6e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5a4ec4;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.certificate {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #333;
+  background: #fff;
+}
+
+.hidden {
+  display: none;
+}
+.signature {
+  margin-top: 40px;
+  text-align: right;
+}
+.signature img {
+  width: 150px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .certificate,
+  .certificate * {
+    visibility: visible;
+  }
+  .certificate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  button {
+    display: none;
+  }
+}

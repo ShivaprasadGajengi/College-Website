@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bonafide Certificate </title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      input,
+      button {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .certificate {
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid #333;
+        background: #fff;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .signature {
+        margin-top: 40px;
+        text-align: right;
+      }
+
+      .signature img {
+        width: 150px;
+      }
+
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+
+        .certificate,
+        .certificate * {
+          visibility: visible;
+        }
+
+        .certificate {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+
+        button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bonafide Certificate </h1>
+      <form id="bonafideForm">
+        <label>Student Name:</label>
+        <input type="text" id="studentName" required />
+
+        <label>Father Name:</label>
+        <input type="text" id="fathername" required />
+
+        <label>Roll No:</label>
+        <input type="text" id="rollno" required />
+
+        <label>Course:</label>
+        <input type="text" id="course" required />
+
+        <label>Academic Year:</label>
+        <input type="text" id="year" required />
+
+        <button type="submit">Generate Certificate</button>
+      </form>
+
+      <div id="certificateArea" class="certificate hidden">
+        <center>
+          <h2>
+            UNIVERSITY COLLEGE OF ENGINEERING KAKATIYA UNIVERSITY, BHADRADRI
+            KOTHAGUDEM
+          </h2>
+          <h3>Bonafide Certificate</h3>
+          <p style="text-align: right">Date: <span id="currentDate"></span></p>
+          <p>
+            This is to certify that
+            <strong><span id="certStudentName"></span></strong> S/o
+            <strong><span id="certfathername"></span></strong> bearing roll no
+            <strong><span id="certrollno"></span></strong> is a bonafide student
+            of the college in the B.Tech currently enrolled in the
+            <strong><span id="certCourse"></span></strong> course for the
+            academic year <strong><span id="certYear"></span></strong>.
+          </p>
+        </center>
+        <div class="signature">
+          <p>Principal</p>
+          <img src="signature.png" alt="Principal's Digital Signature" />
+        </div>
+        <center>
+          <button onclick="window.print()">Print Certificate</button>
+        </center>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("bonafideForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get values
+          const name = document.getElementById("studentName").value;
+          const fathername = document.getElementById("fathername").value;
+          const rollno = document.getElementById("rollno").value;
+          const course = document.getElementById("course").value;
+          const year = document.getElementById("year").value;
+
+          // Set certificate content
+          document.getElementById("certStudentName").textContent = name;
+          document.getElementById("certfathername").textContent = fathername;
+          document.getElementById("certrollno").textContent = rollno;
+          document.getElementById("certCourse").textContent = course;
+          document.getElementById("certYear").textContent = year;
+
+          // Set current date
+          document.getElementById("currentDate").textContent =
+            new Date().toLocaleDateString();
+
+          // Show certificate
+          document.getElementById("certificateArea").classList.remove("hidden");
+        });
+    </script>
+  </body>
+</html>
